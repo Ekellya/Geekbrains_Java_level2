@@ -1,0 +1,19 @@
+/*Не использует эти стили в демонстрации. Может из-за бесплатной версии IntelliJ?*/
+
+#btn1(
+-fx-font: 14px "Serif";
+-fx-padding: 2px;
+-fx-background-color: yellow;
+-fx-text-fill: dark gray;
+)
+
+#textField(
+-fx-font: 14px "Serif";
+-fx-padding: 2px;
+-fx-background-color: gray;
+-fx-text-fill: white;
+)
+
+#textArea(
+-fx-background-color: black;
+)
