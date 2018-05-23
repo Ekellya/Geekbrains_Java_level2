@@ -1,0 +1,19 @@
+
+
+#btn1{
+-fx-font: 14px "Serif";
+-fx-padding: 2px;
+-fx-background-color: yellow;
+-fx-text-fill: gray;
+}
+
+#textField{
+-fx-font: 14px "Serif";
+-fx-padding: 2px;
+-fx-background-color: gray;
+-fx-text-fill: white;
+}
+
+#textArea{
+-fx-background-color: black;
+}
