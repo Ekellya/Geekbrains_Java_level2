@@ -1,4 +1,4 @@
-package sample;
+package client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Tell me");
         Scene scene = new Scene(root, 300, 275);
         primaryStage.setScene(scene);
-        scene.getStylesheets().add((getClass().getResource("/css/Style.css")).toExternalForm());
+        scene.getStylesheets().add((getClass().getResource("/style/Style.css")).toExternalForm());
         primaryStage.show();
     }
     public static void main(String[] args) {
