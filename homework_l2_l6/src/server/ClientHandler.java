@@ -29,7 +29,7 @@ public class ClientHandler {
                                 out.writeUTF("/serverClosed");
                                 break;
                             }
-                            server.broadcastMsg(str);
+                           // server.broadcastMsg(str);
                           //  System.out.println(str);
                          //   out.writeUTF(str);
                            // server
