@@ -10,102 +10,50 @@ import java.util.Vector;
 
 public class Server {
 
-//    private Vector<ClientHandler> clients;
+    private Vector<ClientHandler> clients;
 
-    public Server(){
+    public Server() {
+        clients = new Vector<>();
         ServerSocket server = null;
         Socket socket = null;
-        BufferedReader in = null;
-        PrintWriter    out= null;
-
 
         try {
             server = new ServerSocket(8189);
             System.out.println("Сервер запущен");
 
-
-
             while (true) {
                 socket = server.accept();
                 System.out.println("Клиент подключился");
-                in = new BufferedReader( new InputStreamReader((socket.getInputStream())));
-                out = new PrintWriter(socket.getOutputStream(), true);
-                String input, output;
-
-
-                while ((input = in.readLine()) != null) {
-                if (input.equalsIgnoreCase("exit")) break;
-                out.println("S ::: "+input);
-                System.out.println(input);
-                }
-//                out.close();
-//                in.close();
-//                fromclient.close();
-//                servers.close();
-
-
-//                clients.add( new ClientHandler(this,socket));
+                clients.add( new ClientHandler(this,socket));
             }
         } catch (IOException e) {
-            System.out.println("Не удалось прослушать порт 8189");
+            e.printStackTrace();
         } finally {
             try {
                 socket.close();
             } catch (IOException e) {
-                System.out.println("Не удалось завершить соединение со стороны клиента");
+                e.printStackTrace();
             }
             try {
                 server.close();
             } catch (IOException e) {
-                System.out.println("Не удалось завершить соединение со стороны сервера");
+                e.printStackTrace();
             }
         }
     }
 
-
+    public void broadcastMsg(String msg) {
+        for (ClientHandler o: clients) {
+            o.sendMsg(msg);
+        }
     }
 
-
-
-
-//
-//
-//    public Server() {
-//        clients = new Vector<>();
-//        ServerSocket server = null;//почему именно в конструкторе класса? нельзя за пределами?
-//        Socket socket = null;
-//
-//        try {
-//            server = new ServerSocket(8189);
-//            System.out.println("Сервер запущен");
-//
-//
-//            while (true) {
-//                socket = server.accept();
-//                System.out.println("Клиент подключился");
-//                clients.add( new ClientHandler(this,socket));
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                socket.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            try {
-//                server.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//    public void broadcastMsg(String msg) {
-//        for (ClientHandler o: clients) {
-//            o.sendMsg(msg);
-//        }
+//    public void deleteClient(Socket socket){
+//        System.out.println("клиент отключился");
+//        clients.remove(socket);
 //    }
 
-//}
+}
+
+
+
